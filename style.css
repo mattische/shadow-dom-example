@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 1rem;
+  margin-bottom: 3.2rem;
+  margin-top: 2rem;
+  line-height: 1.4;
+
+}
+
+.product-container {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  color: rgb(0, 0, 0);
+}
+
+.product-container .item {
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.product-container .item .row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding-left: 2rem;
+  font-size: 0.11rem;
+}
+
+
+
+html {
+  font-size: 100%;
+}
+
+body {
+  line-height: 1.4;
+  font-family: "Merriweather", sans-serif;
+}
+
+h1,
+h2,
+h4 {
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: #e31c79;
+  border-radius: 0.4rem;
+  border: 1px solid #545353;
+  color: white;
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 2.8rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 64em) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+p {
+  font-size: 1.4rem;
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  border-top: 1px solid #000000;
+  width: 100%;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  background: rgb(191, 188, 188);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.bottom-nav a {
+  text-align: center;
+  color: #131212;
+}
+
+.bottom-nav a.active {
+  color: #0074d9;
+}
+
+.bottom-nav i {
+  display: block;
+}
+
+.bottom-nav span {
+  font-size: 0.7rem;
+}
+
+.top-nav {
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  background-color: white;
+  width: 100%;
+  padding: 0.2rem 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.4rem;
+}
+
+
+.product-description h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+}
+
+.product-description p,
+ul,
+ol {
+  margin-left: 2rem;
+  font-size: 0.8rem;
+}
+
+.product-container img {
+  width: 20%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+.product-container {
+  border-radius: 0.4rem;
+  border: 1px solid #545353;
+}
+
+.product-container .product-name {
+  color: white;
+}
