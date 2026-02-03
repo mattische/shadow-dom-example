@@ -7,6 +7,7 @@ export default class SingleProduct extends HTMLElement {
 
         // mode: open - allows access to shadow DOM from outside the component
         this.attachShadow({ mode: 'open' });
+
         // mode: closed - prevents access to shadow DOM from outside the component.
         // We create a refenrece (_shadow) to the shadow DOM in the constructor, so we later
         // can refer to it using this._shadow.
@@ -55,7 +56,7 @@ export default class SingleProduct extends HTMLElement {
                             }
                             .read { color: black; text-decoration: underline; cursor: pointer; }
                             </style>
-                            
+
                             <h4 class="product-name">${this.product.name}</h4> 
                             <img src='${this.product.image_url}' alt='${this.product.name}' width='100' />
                             <p class="read">Read description...</p>
