@@ -16,10 +16,11 @@ Därför är det ofta önskvärt att skapa en komponent vars css och javascript 
 
 ## Shadow DOM
 
-När man skapar en komponent så skapas den som en nod i DOM-trädet.  
-Noden, vilken man lägger till komponenten på, kallas ```Shadow host```.  
-Vår komponent kallas ```Shadow root```, vilken då blir roten till det 'träd' som vi lägger till.  
-
+När man skapar en komponent och lägger till den till DOM-trädet, så skapas den som en nod i DOM-trädet;  
+- Noden, till vilken man lägger till komponenten på, kallas ```Shadow host```.  
+- Vår komponent kallas ```Shadow root```, vilken då blir roten till det 'träd' som vi lägger till.  
+- Allt innehåll, t ex element och andra noder, som vi lägger till i vår Shadow root bildar tillsammans ett eget träd - det kallas ```Shadow tree```.
+- ```Shadow boundary``` kallas den yttre gränsen som kapslar in vårt Shadow tree.  
 
 
 
@@ -35,6 +36,11 @@ Vår komponent kallas ```Shadow root```, vilken då blir roten till det 'träd' 
 │     Shadow Boundary     │  ← Yttre gräns för shadow DOM och 
 └─────────────────────────┘
 ```
+
+[Illustration för koncepten ovan.](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM/shadowdom.svg)
+
+
+---
 
 Slots vs API-data
 
