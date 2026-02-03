@@ -10,9 +10,9 @@
 
 ---
 
-## Web Components
+## Inledning
 
-I samband med Web Components så finns det ett några koncept att vara medveten om.  
+I samband med Web Components så finns det några koncept att vara medveten om.  
 
 För det första; Web Components är s.k "custom elements" som skapas av oss som utvecklare.  
 En komponent har en specifik uppgift och syfte, t ex att rendera en produkt på en webbplats.
@@ -21,6 +21,8 @@ Tanken med komponenterna är att dessa ska kunna återanvändas.
 I ett projekt kan olika utvecklare, eller team, arbeta parallellt med egna komponenter som sedan ska integreras i samma projekt. 
 
 Därför är det ofta önskvärt att skapa en komponent vars css och javascript hanteras internt inuti komponenten för att på så sätt "skydda" (encapsulation) dess css och javascript och dessutom att inte påverka andra komponenter (eller element) utanför komponenten. 
+
+---
 
 ## Shadow DOM
 
@@ -226,5 +228,5 @@ this.shadowRoot.appendChild(clone);
 </template>
 ```
 
-Innehållet i en slot är tänkt att läggas till programmatiskt, vilket då görs i en Web component.  
+Innehållet i en slot är tänkt att läggas till programmatiskt, i en Web component.  
 Slots lämpar sig för när vi vill ha data/innehåll för specifika element, t ex beroende på villkor eller annat.
