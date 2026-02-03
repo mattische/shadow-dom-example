@@ -28,7 +28,23 @@ export default class SingleProduct extends HTMLElement {
         return JSON.parse(productAttr)
     }
 
+    // with template
+    connectedCallback() {
+        const productTemplate = document.getElementById('product-template')
+        const clone = productTemplate.content.cloneNode('true')
+        clone.querySelector('.product-name').textContent = this.product.name
+        clone.querySelector('img').src = this.product.image_url
+        clone.querySelector('.product-description').innerHTML = renderMarkdown(this.product.description)
+        clone.querySelector('.read').addEventListener('click', () => {
+            this.shadowRoot.querySelector('.product-description').classList.toggle('show')
+            this.shadowRoot.querySelector('.read').textContent = this.shadowRoot.querySelector('.product-description').classList.contains('show') ? 'Hide description' : 'Read description...'
+            console.log('clicked')
+        })
+        this.shadowRoot.appendChild(clone)
+    }
 
+    // with shadowRoot
+    /*
     // connect component
     connectedCallback() {
 
@@ -39,7 +55,7 @@ export default class SingleProduct extends HTMLElement {
         // Example: this._shadow = this.attachShadow({ mode: 'closed' });
         // Then we would use this._shadow instead of this.shadowRoot below.
         // CSS:
-        // inline css is recommended for shadow DOM components.
+        // inline css (declaratively) is recommended for shadow DOM components.
         // If we used an external stylesheet, it would loaded for each component that is fetched from the server.
         // We could also add CSS with JavaScript via the CSSStyleSheet API (not supported in all browsers, yet).
         this.shadowRoot.innerHTML = `
@@ -65,4 +81,5 @@ export default class SingleProduct extends HTMLElement {
             console.log('clicked')
         });
     }
+    **/
 }

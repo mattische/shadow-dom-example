@@ -144,9 +144,6 @@ export default class SingleProduct extends HTMLElement {
 }
 ```
 
-Som vi har använt Web components hittills i kursen så har vi inte
-
-
 ### undantag för css
 
 Det finns dock undantag som alltid ärvs (spiller) till komponenteter när det gäller css.  
@@ -169,3 +166,41 @@ Slots är bra när användaren i HTML ska bestämma innehållet:
 
   API-data fylls i programmatiskt - template utan slots är mer effektivt.
   
+  ---
+
+## Templates och Slots
+
+**Templates** är html-element som fungerar som mallar för att kunna rendera innehåll med en fast struktur. 
+
+**Slots** är, i motsats till templates, element där innehållet inte är fast. Slots lämpar sig inte tex för stora mängder strukturerad data - dessa är mer tänkta att användas vid 'special-fall'. 
+
+### Templates
+
+Definieras i html-filen med markup och taggen `<template>`.  
+Man kan då placera css-styling inuti template-elementet, som blir inkapslad.  
+
+```html
+<template id="product-template">
+    <style>
+      h4 { background: #e31c79; color: white; }
+    </style>
+    <h4 class="product-name"></h4>
+    <img />
+    <div class="product-description"></div>
+</template>
+```
+För att använda en template i en Web component så måste man klona noden (elementet) 
+och lägga till den;
+```javascript
+// i komponenten
+const template = document.getElementById('product-template');
+const clone = template.content.cloneNode(true);  // true = deep clone
+
+clone.querySelector('.product-name').textContent = this.product.name;
+this.shadowRoot.appendChild(clone);
+```
+
+**Fördelar med templates?**
+- passar bra för statiskt strukturerad data, t ex data från API.
+- dock ett **MEN** - om datat är dynamiskt lämpar sig template literals med backticks bättre (som vi tidigare gjort med ``ìnnerHTML```) -> ```this.shadowRoot.innerHTML = `${product.price} ${product.name}` ```
+- möjlighet att separera css från komponenten till html-dokumentet

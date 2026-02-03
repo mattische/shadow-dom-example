@@ -17,6 +17,39 @@
     <router-outlet></router-outlet>
     <navigation-outlet></navigation-outlet>
 
+    <!-- Product template -->
+    <template id="product-template">
+        <style>
+            h4 {
+                background: #e31c79;
+                color: white;
+            }
+
+            img {
+                width: 20%;
+            }
+
+            .product-description {
+                font-size: 0.8rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .product-description.show {
+                max-height: 500px;
+            }
+
+            .read {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        </style>
+        <h4 class="product-name"></h4>
+        <img />
+        <p class="read">Read description...</p>
+        <div class="product-description"></div>
+    </template>
 </body>
 
 </html>
