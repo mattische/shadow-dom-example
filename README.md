@@ -170,14 +170,12 @@ Slots är bra när användaren i HTML ska bestämma innehållet:
 
 ## Templates och Slots
 
-**Templates** är html-element som fungerar som mallar för att kunna rendera innehåll med en fast struktur. 
-
-**Slots** är, i motsats till templates, element där innehållet inte är fast. Slots lämpar sig inte tex för stora mängder strukturerad data - dessa är mer tänkta att användas vid 'special-fall'. 
-
 ### Templates
 
-Definieras i html-filen med markup och taggen `<template>`.  
-Man kan då placera css-styling inuti template-elementet, som blir inkapslad.  
+**Templates** är html-element som fungerar som mallar för att kunna rendera innehåll. Lämpar sig väl för data/innehåll med en fast struktur.  
+
+Templates definieras i html-filen med markup - `<template>`.  
+Man kan placera css inuti template-elementet, som blir inkapslad.  
 
 ```html
 <template id="product-template">
@@ -189,8 +187,10 @@ Man kan då placera css-styling inuti template-elementet, som blir inkapslad.
     <div class="product-description"></div>
 </template>
 ```
-För att använda en template i en Web component så måste man klona noden (elementet) 
+
+För att använda en template inuti en Web component så måste man klona noden (html-elementet) 
 och lägga till den;
+
 ```javascript
 // i komponenten
 const template = document.getElementById('product-template');
@@ -200,7 +200,31 @@ clone.querySelector('.product-name').textContent = this.product.name;
 this.shadowRoot.appendChild(clone);
 ```
 
-**Fördelar med templates?**
+**summering**
 - passar bra för statiskt strukturerad data, t ex data från API.
 - dock ett **MEN** - om datat är dynamiskt lämpar sig template literals med backticks bättre (som vi tidigare gjort med ``ìnnerHTML```) -> ```this.shadowRoot.innerHTML = `${product.price} ${product.name}` ```
 - möjlighet att separera css från komponenten till html-dokumentet
+
+
+### Slots
+
+**Slots** är, i motsats till templates, element där innehållet inte har en fast struktur. Slots lämpar sig inte tex för stora mängder strukturerad data - dessa är mer tänkta att användas vid 'special-fall'.  
+
+```html
+<template id="product-template">
+    <style>
+      /** slot css */
+      slot[name="badge"] { color: red; }
+    </style>
+
+    <!-- slot -->
+    <slot name="badge"></slot>
+
+    <h4 class="product-name"></h4>
+    <img />
+    <div class="product-description"></div>
+</template>
+```
+
+Innehållet i en slot är tänkt att läggas till programmatiskt, vilket då görs i en Web component.  
+Slots lämpar sig för när vi vill ha data/innehåll för specifika element, t ex beroende på villkor eller annat.
