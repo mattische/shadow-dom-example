@@ -23,6 +23,8 @@
             h4 {
                 background: #e31c79;
                 color: white;
+                border-radius: 5px;
+                padding: 10px;
             }
 
             img {
@@ -37,19 +39,28 @@
             }
 
             .product-description.show {
-                max-height: 500px;
+                max-height: 2500px;
             }
 
             .read {
                 text-decoration: underline;
                 cursor: pointer;
             }
+
+            ::slotted([slot="badge"]) {
+                background: red;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+            }
         </style>
+        <slot name="badge"></slot>
         <h4 class="product-name"></h4>
         <img />
         <p class="read">Read description...</p>
         <div class="product-description"></div>
     </template>
+    <!-- End -->
 </body>
 
 </html>

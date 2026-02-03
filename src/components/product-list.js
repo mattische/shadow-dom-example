@@ -20,9 +20,15 @@ export default class ProductList extends HTMLElement {
 
     render() {
         const list = this.products.map((product) => {
+            //example for slot
+            const showBadge = Math.random() < 0.3;  // 30%
+            const badge = showBadge ? '<span slot="badge">NEW</span>' : '';
+
+
             const productJson = JSON.stringify(product).replace(/'/g, '&apos;').replace(/"/g, '&quot;')
             return `<div class='product-container'>
                             <single-product class='item' product='${productJson}'>
+                            ${badge}
                             </single-product>
                     </div>`;
         }).join("")
