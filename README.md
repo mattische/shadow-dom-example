@@ -158,15 +158,6 @@ Dessa är:
 - variabler ärvs alltid, t ex ```--main-color: red```
   vilket gör att ```var(--main-color)```kan användas i en komponent oavsett mode.
 
-
-Slots vs API-data
-
-Slots är bra när användaren i HTML ska bestämma innehållet:
-  <my-card>
-    <span slot="title">Hårdkodad titel</span>
-  </my-card>
-
-  API-data fylls i programmatiskt - template utan slots är mer effektivt.
   
   ---
 
