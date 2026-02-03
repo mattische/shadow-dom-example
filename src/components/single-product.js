@@ -37,12 +37,13 @@ export default class SingleProduct extends HTMLElement {
         // shadowRoot:
         // mode: 'open', we can access shadow DOM from outside the component using element.shadowRoot
         // mode: 'closed', we cannot access shadow DOM from outside the component.
-        // If closed we would have to save an reference to the shadow DOM in the constructor.
+        // If 'closed' we would have to save an reference to the shadow DOM in the constructor.
         // Example: this._shadow = this.attachShadow({ mode: 'closed' });
         // Then we would use this._shadow instead of this.shadowRoot below.
         // CSS:
         // inline css is recommended for shadow DOM components.
         // If we used an external stylesheet, it would loaded for each component that is fetched from the server.
+        // We could also add CSS with JavaScript via the CSSStyleSheet API (not supported in all browsers, yet).
         this.shadowRoot.innerHTML = `
                             <style>
                             h4 { background: #e31c79; color: white; border-radius: 5px; padding: 10px; }
