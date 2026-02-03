@@ -28,10 +28,7 @@ export default class SingleProduct extends HTMLElement {
         return JSON.parse(productAttr)
     }
 
-    productName() {
-        console.log(this.product.name)
-        return this.product.name
-    }
+
     // connect component
     connectedCallback() {
 

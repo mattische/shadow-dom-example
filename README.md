@@ -52,15 +52,113 @@ När man skapar en komponent och lägger till den till DOM-trädet, så skapas d
 
 ## shadowRoot "mode"
 
-När man ska lägga till Web components till en sida så har man 3 alternativa "modes" som man kan välja.  
+När man ska lägga till Web components till en sida så har man 2 "modes" som man kan välja.  
+Med dessa modes väljer man vilken typ av inkapsling (encapsulation) man vill ha. Dessa modes är ```open``` eller ```closed```.  
+Om man inte väljer ett mode man blir det ingen inkapsling och exempelvis global CSS påverkar även innehållet i komponenten.
 Man väljer, deklarativt, vilket ```mode``` man vill ha.  
-Dew olika modes som finns är:  
 
-- mode: 'open' - när man vill ha en "open" shadow som kan ändras med javascript via shadow root.  
-```this.attachShadow({ mode: 'open' })```
-- inte ange mode alls (default) - det gör man genom att inte ange ett s.k ```mode```
+På sätt och vis finns det tre alternativ; open, closed och inget mode alls.
+
+### 1. mode: 'open'
+
+- när man vill ha en "open" shadow som inte påverkas av t ex global css eller javascript.
+- ```this.attachShadow({ mode: 'open' })```
+- via ```shadowRoot```-objektet kan vi komma åt innehållet.  
+
+
+```javascript
+export default class PetComponent extends HTMLElement {
+  constructor(nameOfPet) {
+          super()
+          this.name = nameOfPet
+          //mode open
+          this.attachShadow({ mode: 'open' })
+      }
+
+  ...
+  // vi måste 'gå via' shadowRoot-objektet för att manipulera innehållet.
+  // vi gör också en egen style-sheet för innehållet.
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+                              <style>
+                              .pet-name { background: #e31c79; }
+                              </style>
+                              <h4 class="pet-name">${this.name}</h4> 
+  }
+}
+```
+
+### 2. mode: 'closed'
+
+- när man vill ha en "closed" shadow med total encapsulation
+- ```this.attachShadow({ mode: 'closed' })```
+- vi måste gå via en referens för att manipulera innehållet
+
+
+```javascript
+export default class CarComponent extends HTMLElement {
+  constructor() {
+          super(brand, model)
+          //mode closed - vi gör en referens
+          this._myShadow = this.attachShadow({ mode: 'closed' })
+
+          this.b = brand
+          this.m = model
+      }
+
+  ...
+
+  // vi måste vår egna referens för att manipulera innehållet.
+  connectedCallback() {
+    this._myShadow.innerHTML = `
+                              <style>
+                              .car-card { background: #e31c79; }
+                              </style>
+                              <div class="car-card"><h1>${this.b}</h1><p>${this.m}</p></div> 
+  }
+}
+```
+
+
+### 3. inget mode
+Om man inte anger mode alls så blir det ingen inkapsling.  
+
+```javascript
+export default class SingleProduct extends HTMLElement {
+  constructor() {
+          super()
+          //vi gör inget särskilt i konstruktorn...
+      }
+
+  ...
+
+  // vi maniupulera direkt via innerHTML. 
+  // om vi vill kan vi ha css, men global css kommer att påverka
+  connectedCallback() {
+    this.innerHTML = `
+                              <style>
+                              .product-name { background: #e31c79; }
+                              </style>
+                              <h4 class="product-name">${this.product.name}</h4> 
+  }
+}
+```
 
 Som vi har använt Web components hittills i kursen så har vi inte
+
+
+### undantag för css
+
+Det finns dock undantag som alltid ärvs (spiller) till komponenteter när det gäller css.  
+
+Dessa är:
+- ```font-family``` och ```font-size```
+- ```color```
+- ```line-height```
+- ```text-align```
+- variabler ärvs alltid, t ex ```--main-color: red```
+  vilket gör att ```var(--main-color)```kan användas i en komponent oavsett mode.
+
 
 Slots vs API-data
 
