@@ -3,10 +3,11 @@ import { renderMarkdown } from "../utils.js";
 export default class SingleProduct extends HTMLElement {
 
     constructor() {
-        super();
+        super()
 
+        // this attaches a shadow DOM to the component (where it is used in the DOM)
         // mode: open - allows access to shadow DOM from outside the component
-        this.attachShadow({ mode: 'open' });
+        this.attachShadow({ mode: 'open' })
 
         // mode: closed - prevents access to shadow DOM from outside the component.
         // We create a refenrece (_shadow) to the shadow DOM in the constructor, so we later
@@ -24,12 +25,12 @@ export default class SingleProduct extends HTMLElement {
             .replace(/&quot;/g, '"')
             .replace(/&apos;/g, "'");
 
-        return JSON.parse(productAttr);
+        return JSON.parse(productAttr)
     }
 
     productName() {
-        console.log(this.product.name);
-        return this.product.name;
+        console.log(this.product.name)
+        return this.product.name
     }
     // connect component
     connectedCallback() {
@@ -46,7 +47,7 @@ export default class SingleProduct extends HTMLElement {
         // We could also add CSS with JavaScript via the CSSStyleSheet API (not supported in all browsers, yet).
         this.shadowRoot.innerHTML = `
                             <style>
-                            h4 { background: #e31c79; color: white; border-radius: 5px; padding: 10px; }
+                            .product-name { background: #e31c79; color: white; border-radius: 5px; padding: 10px; }
                             img { width: 20%; }
                             .product-description { font-size: 0.8rem; max-height: 0;
                                 overflow: hidden;
@@ -64,7 +65,7 @@ export default class SingleProduct extends HTMLElement {
                             <div class='product-description'>${renderMarkdown(this.product.description)}</div>`;
         this.shadowRoot.querySelector('.read').addEventListener('click', () => {
             this.shadowRoot.querySelector('.product-description').classList.toggle('show')
-            console.log('clicked');
+            console.log('clicked')
         });
     }
 }

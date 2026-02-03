@@ -1,6 +1,14 @@
 # SHADOW DOM
 
-https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM
+
+> [!TIP]
+> Läs mer om shadow DOM på mdn:
+>  
+> [Using shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM)
+>
+> 
+
+---
 
 ## Web Components
 
@@ -41,6 +49,18 @@ När man skapar en komponent och lägger till den till DOM-trädet, så skapas d
 
 
 ---
+
+## shadowRoot "mode"
+
+När man ska lägga till Web components till en sida så har man 3 alternativa "modes" som man kan välja.  
+Man väljer, deklarativt, vilket ```mode``` man vill ha.  
+Dew olika modes som finns är:  
+
+- mode: 'open' - när man vill ha en "open" shadow som kan ändras med javascript via shadow root.  
+```this.attachShadow({ mode: 'open' })```
+- inte ange mode alls (default) - det gör man genom att inte ange ett s.k ```mode```
+
+Som vi har använt Web components hittills i kursen så har vi inte
 
 Slots vs API-data
 
