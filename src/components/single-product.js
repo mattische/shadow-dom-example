@@ -45,7 +45,7 @@ export default class SingleProduct extends HTMLElement {
         // If we used an external stylesheet, it would loaded for each component that is fetched from the server.
         this.shadowRoot.innerHTML = `
                             <style>
-                            h4 { background: #e31c79; color: white; border-radius: 5px; padding: 10px; cursor: pointer; }
+                            h4 { background: #e31c79; color: white; border-radius: 5px; padding: 10px; }
                             img { width: 20%; }
                             .product-description { font-size: 0.8rem; max-height: 0;
                                 overflow: hidden;

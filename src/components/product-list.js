@@ -1,5 +1,6 @@
 import { apiKey, baseURL } from "../utils.js";
 
+
 export default class ProductList extends HTMLElement {
     constructor() {
         super();

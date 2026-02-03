@@ -1,5 +1,5 @@
-const apiKey = "6d59ce3fb6bd52a8611024f59eea0176";
-const baseURL = "https://lager.emilfolino.se/v2";
+const apiKey = import.meta.env.VITE_API_KEY;
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 function renderMarkdown(text) {
     if (!text) return '';
