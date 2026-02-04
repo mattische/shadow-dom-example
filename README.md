@@ -92,6 +92,7 @@ export default class PetComponent extends HTMLElement {
 Med mode open läcker inte css in i komponenten men följande är möjligt;  
 
 ```javascript
+//devtools
   const elm = document.querySelector('single-product');
   elm.shadowRoot.querySelector('h4').style.color = 'green';
   elm.shadowRoot.innerHTML = '<h1>Ooops - hackad!</h1>';
