@@ -153,7 +153,7 @@ export default class SingleProduct extends HTMLElement {
 }
 ```
 
-### summering open och closed
+### 4. Summering och rekommendation open och closed
 
 | **Scenario** | **mode: 'open'** | **mode: 'closed'** |
 | --- | --- | --- |
@@ -163,7 +163,23 @@ export default class SingleProduct extends HTMLElement {
 | browser exstensions | kan påverka | kan inte påverka |
 | testning (tex Cypress) | enkelt | jobbigt |
 
-### undantag för css
+
+> [!TIP]
+>
+> Använd mode: 'open'
+> 
+> **mode: 'closed'** 
+> 
+> Används sällan eftersom det försvårar testning och debuggning. 
+> Dessutom ger det ett _falskt_ skydd eftersom det inte är en inbyggd 
+> säkerhetsmekanism - det ger 'en stängd dörr' men referensen går att hitta via prototypen.
+>
+> **mode: 'open'**
+> 
+> används i praktiken eftersom det åtminstone ger skydd mot läckage av global css.
+> 
+
+### 5. Undantag för css
 
 Det finns dock undantag som alltid ärvs (spiller) till komponenteter när det gäller css.  
 
