@@ -10,6 +10,14 @@
 
 ---
 
+_För att köra exempel-koden så behöver du skapa en egen ```.env``` samt en API-key från lager api._
+
+_Du kan utgå ifrån ```.env-example``` och däri byta ut till din egen API-nyckel till lager api._. 
+
+_Installera med ```npm install``` och kör med ```npm run dev```_
+
+---
+
 ## Inledning
 
 I samband med Web Components så finns det några koncept att vara medveten om.  
@@ -168,6 +176,11 @@ export default class SingleProduct extends HTMLElement {
 > [!TIP]
 >
 > Använd mode: 'open'
+>
+> **mode: 'open'**
+> 
+> används i praktiken eftersom det åtminstone ger skydd mot läckage av global css.
+>
 > 
 > **mode: 'closed'** 
 > 
@@ -175,9 +188,7 @@ export default class SingleProduct extends HTMLElement {
 > Dessutom ger det ett _falskt_ skydd eftersom det inte är en inbyggd 
 > säkerhetsmekanism - det ger 'en stängd dörr' men referensen går att hitta via prototypen.
 >
-> **mode: 'open'**
-> 
-> används i praktiken eftersom det åtminstone ger skydd mot läckage av global css.
+
 > 
 
 ### 5. Undantag för css
