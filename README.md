@@ -85,9 +85,16 @@ export default class PetComponent extends HTMLElement {
                               <style>
                               .pet-name { background: #e31c79; }
                               </style>
-                              <h4 class="pet-name">${this.name}</h4> 
+                              <h4 class="pet-name">${this.name}</h4>` 
   }
-}
+```
+
+Med mode open läcker inte css in i komponenten men följande är möjligt;  
+
+```javascript
+  const elm = document.querySelector('single-product');
+  elm.shadowRoot.querySelector('h4').style.color = 'green';
+  elm.shadowRoot.innerHTML = '<h1>Ooops - hackad!</h1>';
 ```
 
 ### 2. mode: 'closed'
@@ -116,11 +123,11 @@ export default class CarComponent extends HTMLElement {
                               <style>
                               .car-card { background: #e31c79; }
                               </style>
-                              <div class="car-card"><h1>${this.b}</h1><p>${this.m}</p></div> 
+                              <div class="car-card"><h1>${this.b}</h1><p>${this.m}</p></div>`
   }
-}
 ```
 
+Med closed mode läcker ingen css eller javascript.
 
 ### 3. inget mode
 Om man inte anger mode alls så blir det ingen inkapsling.  
@@ -141,10 +148,20 @@ export default class SingleProduct extends HTMLElement {
                               <style>
                               .product-name { background: #e31c79; }
                               </style>
-                              <h4 class="product-name">${this.product.name}</h4> 
+                              <h4 class="product-name">${this.product.name}</h4>` 
   }
 }
 ```
+
+### summering open och closed
+
+| **Scenario** | **mode: 'open'** | **mode: 'closed'** |
+| --- | --- | --- |
+| DevTools | kan påverka | kan inte påverka, men osäkert |
+| 3:e parts script | kan påverka | kan inte påverka |
+| debuggning | enkelt | jobbigt |
+| browser exstensions | kan påverka | kan inte påverka |
+| testning (tex Cypress) | enkelt | jobbigt |
 
 ### undantag för css
 
